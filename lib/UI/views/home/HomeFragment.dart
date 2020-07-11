@@ -1,7 +1,7 @@
 import 'package:epiflipboard/UI/views/ArticleWidget.dart';
 import 'package:epiflipboard/UI/views/home/StartingPage.dart';
-import 'package:epiflipboard/data/ArticleModel.dart';
-import 'package:epiflipboard/data/api.dart' as api;
+import 'file:///C:/Users/Moi/Documents/GitLab/epiflipboard/epiflipboard-app/lib/models/Article.dart';
+import 'file:///C:/Users/Moi/Documents/GitLab/epiflipboard/epiflipboard-app/lib/repositories/api.dart' as api;
 import 'package:flutter/material.dart';
 
 class HomeFragment extends StatefulWidget {
@@ -10,10 +10,10 @@ class HomeFragment extends StatefulWidget {
 }
 
 class _HomeFragmentState extends State<HomeFragment> {
-  List<ArticleData> _articles;
+  List<ArticleModel> _articles;
 
   void _updateArticles() {
-    _articles = api.getArticles();
+//    _articles = api.getArticles();
   }
 
   void refresh() {

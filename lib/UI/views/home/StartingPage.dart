@@ -1,10 +1,10 @@
 import 'package:epiflipboard/UI/components/PrimaryArticleBox.dart';
 import 'package:epiflipboard/UI/components/SecondaryArticleBox.dart';
-import 'package:epiflipboard/data/ArticleModel.dart';
+import 'file:///C:/Users/Moi/Documents/GitLab/epiflipboard/epiflipboard-app/lib/models/Article.dart';
 import 'package:flutter/material.dart';
 
 class StartingPage extends StatelessWidget {
-  final List<ArticleData> articles;
+  final List<ArticleModel> articles;
   final double _pad = 10.0;
 
   const StartingPage({Key key, @required this.articles}) : super(key: key);

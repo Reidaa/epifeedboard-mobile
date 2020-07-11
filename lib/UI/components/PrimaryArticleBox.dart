@@ -1,9 +1,9 @@
 import 'package:epiflipboard/UI/utils.dart';
-import 'package:epiflipboard/data/ArticleModel.dart';
+import 'file:///C:/Users/Moi/Documents/GitLab/epiflipboard/epiflipboard-app/lib/models/Article.dart';
 import 'package:flutter/material.dart';
 
 class PrimaryArticleBox extends StatelessWidget {
-  final ArticleData article;
+  final ArticleModel article;
 
   const PrimaryArticleBox({Key key, @required this.article}) : super(key: key);
 
@@ -38,7 +38,7 @@ class PrimaryArticleBox extends StatelessWidget {
         decoration: BoxDecoration(
           image: DecorationImage(
             fit: BoxFit.cover,
-            image: NetworkImage(article.imgUrl),
+            image: NetworkImage(article.imageUrl),
           ),
         ),
       ),
@@ -56,7 +56,7 @@ class PrimaryArticleBox extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 1.5),
             child: Text(
-              article.magUrl,
+              article.sourceUrl,
               style: TextStyle(color: Colors.white),
             ),
           ),

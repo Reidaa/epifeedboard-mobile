@@ -1,55 +1,46 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
-
-abstract class ArticleData {
-  String title;
-  String body;
-  String imgUrl;
-  String magUrl;
-  String articleUrl;
-  String magName;
-  String author;
-  String age;
-}
+import 'package:meta/meta.dart';
+import 'dart:convert';
 
 class ArticleModel {
   final String title;
   final String body;
   final String imageUrl;
-  final String magazineUrl;
+  final String sourceUrl;
   final String articleUrl;
-  final String magazineName;
+  final String sourceName;
   final String authorName;
-  final String articleAge;
+  final String age;
 
   ArticleModel({
     @required this.title,
     @required this.body,
     @required this.imageUrl,
-    @required this.magazineUrl,
+    @required this.sourceUrl,
     @required this.articleUrl,
-    @required this.magazineName,
+    @required this.sourceName,
     @required this.authorName,
-    @required this.articleAge,
+    @required this.age,
   });
 
   factory ArticleModel.fromJson(Map<String, dynamic> json) {
     return ArticleModel(
-      title: json["title"] as String,
-      body: json["body"] as String,
-      imageUrl: json["imageUrl"] as String,
-      magazineUrl: json["magazineUrl"] as String,
-      articleUrl: json["articleUrl"] as String,
-      magazineName: json["magazineName"] as String,
+      sourceName: json["source"]["name"] as String,
       authorName: json["authorName"] as String,
-      articleAge: json["articleAge"] as String,
+      title: json["title"] as String,
+      body: json["content"] as String,
+      articleUrl: json["url"] as String,
+      imageUrl: json["urlToImage"] as String,
+      age: json["publishedAt"] as String,
+      sourceUrl: json["magazineUrl"] as String,
     );
   }
 }
 
-class CarlosArticle implements ArticleData {
+class CarlosArticle implements ArticleModel {
   @override
-  String author = "Moi";
+  String authorName = "Moi";
 
   @override
   String body =
@@ -60,13 +51,13 @@ class CarlosArticle implements ArticleData {
       "Nullam ac sollicitudin nulla. Nulla id arcu ac elit aliquam suscipit. Phasellus suscipit tempor tortor luctus semper. Aliquam nec pellentesque mauris. Aenean tempor sapien vel nibh tincidunt, a euismod nunc laoreet. Nunc sagittis vestibulum justo posuere faucibus. Nam fermentum risus eu sem eleifend tempus. Suspendisse vel sagittis massa, id fringilla nunc. Suspendisse semper fermentum tristique. Pellentesque convallis neque vel ante congue pharetra. Nam feugiat consequat vehicula. In at metus accumsan risus sollicitudin imperdiet id id orci. In id maximus quam, tincidunt molestie ante. Etiam et metus eros. Proin cursus dui non condimentum ullamcorper. Sed eget felis a leo facilisis facilisis.";
 
   @override
-  String imgUrl = "https://i.pinimg.com/originals/9c/44/ea/9c44eaa2030dbd76313b7c79e235a5f7.jpg";
+  String imageUrl = "https://i.pinimg.com/originals/9c/44/ea/9c44eaa2030dbd76313b7c79e235a5f7.jpg";
 
   @override
-  String magName = "AucunMag";
+  String sourceName = "AucunMag";
 
   @override
-  String magUrl = "www.monsite.com";
+  String sourceUrl = "www.monsite.com";
 
   @override
   String title =
@@ -79,7 +70,7 @@ class CarlosArticle implements ArticleData {
   String articleUrl = "https://fr.wikipedia.org/wiki/Lorem_ipsum";
 }
 
-class BobArticle implements ArticleData {
+class BobArticle implements ArticleModel {
   @override
   String age = "12";
 
@@ -87,7 +78,7 @@ class BobArticle implements ArticleData {
   String articleUrl = "https://fr.wikipedia.org/wiki/Bob_l%27%C3%A9ponge";
 
   @override
-  String author = "Wikipedia";
+  String authorName = "Wikipedia";
 
   @override
   String body =
@@ -98,19 +89,19 @@ class BobArticle implements ArticleData {
       "Bob l'éponge est diffusé internationalement et traduit dans diverses langues.\n";
 
   @override
-  String imgUrl =
+  String imageUrl =
       "https://www.serial-gamers.fr/wp-content/uploads/2019/06/thq-nordic-announces-spongebob-squarepants-battle-for-bikini-bottom-rehydrated_feature.jpg";
   @override
-  String magName = "Wikipedia";
+  String sourceName = "Wikipedia";
 
   @override
-  String magUrl = "wikipedia.fr";
+  String sourceUrl = "wikipedia.fr";
 
   @override
   String title = "Bob l'eponge, ce bro";
 }
 
-class PatrickArticle implements ArticleData {
+class PatrickArticle implements ArticleModel {
   @override
   String age = "3";
 
@@ -118,21 +109,96 @@ class PatrickArticle implements ArticleData {
   String articleUrl = "https://fr.wikipedia.org/wiki/Patrick_%C3%89toile_de_mer";
 
   @override
-  String author = "Wikipedia";
+  String authorName = "Wikipedia";
 
   @override
   String body =
       "Patrick Étoile de mer, ou Patrick Étoile (Patrick Star), est un personnage de la série télévisée d'animation américaine Bob l'éponge. Il apparaît pour la première fois dès le premier épisode de la série, intitulé Bienvenue à bord !, diffusé aux États-Unis le 1er mai 1999. Il est doublé dans la version originale par Bill Fagerbakke, en version française par Érik Colin jusqu'en 2013, puis par Boris Rehlinger et en version québécoise par Hugolin Chevrette-Landesque. Patrick Étoile est conçu par le biologiste et animateur Stephen Hillenburg peu après l'annulation de sa série Rocko's Modern Life en 1996. À cette époque, Hillenburg tente de créer une série télévisée mettant en scène une éponge très optimiste qui agace son entourage tout en s'inspirant des idées de Laurel et Hardy et de Pee-Wee Herman.";
 
   @override
-  String imgUrl = "https://daexie.files.wordpress.com/2016/02/tvbp32x9.png?w=640";
+  String imageUrl = "https://daexie.files.wordpress.com/2016/02/tvbp32x9.png?w=640";
 
   @override
-  String magName = "Wikipedia";
+  String sourceName = "Wikipedia";
 
   @override
-  String magUrl = "wikipedia.fr";
+  String sourceUrl = "wikipedia.fr";
 
   @override
   String title = "Patrick, ce bro";
 }
+
+// To parse this JSON data, do
+//
+//     final article = articleFromJson(jsonString);
+
+
+Article articleFromJson(String str) => Article.fromJson(json.decode(str));
+
+String articleToJson(Article data) => json.encode(data.toJson());
+
+class Article {
+  Article({
+    @required this.source,
+    @required this.author,
+    @required this.title,
+    @required this.description,
+    @required this.url,
+    @required this.urlToImage,
+    @required this.publishedAt,
+    @required this.content,
+  });
+
+  final Source source;
+  final String author;
+  final String title;
+  final String description;
+  final String url;
+  final String urlToImage;
+  final DateTime publishedAt;
+  final String content;
+
+  factory Article.fromJson(Map<String, dynamic> json) => Article(
+    source: json["source"] == null ? null : Source.fromJson(json["source"]),
+    author: json["author"] == null ? null : json["author"],
+    title: json["title"] == null ? null : json["title"],
+    description: json["description"] == null ? null : json["description"],
+    url: json["url"] == null ? null : json["url"],
+    urlToImage: json["urlToImage"] == null ? null : json["urlToImage"],
+    publishedAt: json["publishedAt"] == null ? null : DateTime.parse(json["publishedAt"]),
+    content: json["content"] == null ? null : json["content"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "source": source == null ? null : source.toJson(),
+    "author": author == null ? null : author,
+    "title": title == null ? null : title,
+    "description": description == null ? null : description,
+    "url": url == null ? null : url,
+    "urlToImage": urlToImage == null ? null : urlToImage,
+    "publishedAt": publishedAt == null ? null : publishedAt.toIso8601String(),
+    "content": content == null ? null : content,
+  };
+}
+
+class Source {
+  Source({
+    @required this.id,
+    @required this.name,
+  });
+
+  final String id;
+  final String name;
+
+  factory Source.fromJson(Map<String, dynamic> json) => Source(
+    id: json["id"] == null ? null : json["id"],
+    name: json["name"] == null ? null : json["name"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "id": id == null ? null : id,
+    "name": name == null ? null : name,
+  };
+}
+
+

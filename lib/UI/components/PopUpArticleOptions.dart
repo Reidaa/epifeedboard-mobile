@@ -1,4 +1,4 @@
-import 'package:epiflipboard/data/ArticleModel.dart';
+import 'file:///C:/Users/Moi/Documents/GitLab/epiflipboard/epiflipboard-app/lib/models/Article.dart';
 import 'package:flutter/material.dart';
 
 enum Options {
@@ -9,7 +9,7 @@ enum Options {
 }
 
 class PopUpArticleOptions extends StatefulWidget {
-  final ArticleData article;
+  final ArticleModel article;
 
   const PopUpArticleOptions({Key key, @required this.article})
       : super(key: key);

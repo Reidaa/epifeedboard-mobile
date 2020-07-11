@@ -1,11 +1,11 @@
 import 'package:epiflipboard/UI/components/generic/WrapOverflowText.dart';
 import 'package:epiflipboard/UI/utils.dart';
-import 'package:epiflipboard/data/ArticleModel.dart';
+import 'file:///C:/Users/Moi/Documents/GitLab/epiflipboard/epiflipboard-app/lib/models/Article.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ArticleWidget extends StatelessWidget {
-  final ArticleData article;
+  final ArticleModel article;
 
   const ArticleWidget({Key key, @required this.article}) : super(key: key);
 
@@ -17,7 +17,7 @@ class ArticleWidget extends StatelessWidget {
         children: <Widget>[
           Expanded(
             flex: 55,
-            child: _buildCover(context: context, imageUrl: article.imgUrl),
+            child: _buildCover(context: context, imageUrl: article.imageUrl),
           ),
           Expanded(
             flex: 45,
@@ -27,9 +27,9 @@ class ArticleWidget extends StatelessWidget {
                 children: <Widget>[
                   _buildTitle(title: article.title),
                   _buildHeader(
-                      url: article.magUrl,
+                      url: article.sourceUrl,
                       age: article.age,
-                      authorName: article.author),
+                      authorName: article.authorName),
                   _buildBody(body: article.body),
                 ],
               ),
@@ -103,7 +103,7 @@ class ArticleWidget extends StatelessWidget {
   }
 }
 
-List<Widget> buildArticlesWidgetList({@required List<ArticleData> articles}) {
+List<Widget> buildArticlesWidgetList({@required List<ArticleModel> articles}) {
   var widgetList = <Widget>[];
 
   for (var i = 0; i < articles.length; i++) {

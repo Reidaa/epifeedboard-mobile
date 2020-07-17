@@ -54,7 +54,7 @@ class _HostState extends State<Host> {
                   children: <Widget>[
                     HomeFragment(),
                     FollowingFragment(),
-                    // ExploreFragment(),
+                    ExploreFragment(),
                     ProfileFragment(),
                   ],
                 ),
@@ -69,6 +69,7 @@ class _HostState extends State<Host> {
 
   Widget _buildBtmNavigationBar() {
     return BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
@@ -78,10 +79,10 @@ class _HostState extends State<Host> {
           icon: Icon(Icons.apps),
           title: Text('Following'),
         ),
-        // BottomNavigationBarItem(
-        //   icon: Icon(Icons.search),
-        //   title: Text('Explore'),
-        // ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.search),
+          title: Text('Explore'),
+        ),
         BottomNavigationBarItem(
           icon: Icon(Icons.person),
           title: Text('Profile'),

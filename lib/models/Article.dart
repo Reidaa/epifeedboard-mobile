@@ -33,7 +33,7 @@ class ArticleModel {
       articleUrl: json["url"] as String,
       imageUrl: json["urlToImage"] as String,
       age: json["publishedAt"] as String,
-      sourceUrl: json["magazineUrl"] as String,
+      sourceUrl: "www.monsite.com",
     );
   }
 }

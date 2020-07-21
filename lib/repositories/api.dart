@@ -1,35 +1,27 @@
 import '../models/Article.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:meta/meta.dart';
 
 class API {
-  final _baseUrl = "localhost:3000/";
-  final http.Client httpClient;
-  List<ArticleModel> _cachedArticle;
+  final _baseUrl = "http://172.22.60.165:3000";
 
-  API({
-    @required this.httpClient,
-  }) : assert(httpClient != null);
+  API();
 
-  Future<ArticleModel> fetchArticle() async {
+  Future<List<ArticleModel>> fetchArticles() async {
     final url = '$_baseUrl/news';
-    final response = await this.httpClient.get(url);
+    final response = await http.get(url);
+    var _articles = <ArticleModel>[];
 
     if (response.statusCode != 200) {
       throw new Exception("error getting articles");
     }
 
     final json = jsonDecode(response.body);
-    return ArticleModel.fromJson(json);
-
-  }
-
-  Future<List<ArticleModel>> getArticles({int start, int end}) async {
-    if (start == null || end == null) {
-      return _cachedArticle;
-    } else {
-      return _cachedArticle.getRange(start, end).toList();
+    print(json["data"]["articles"].length);
+    for (int i = 0; i != json["data"]["articles"].length; i++) {
+      _articles.add(ArticleModel.fromJson(json["data"]["articles"][i]));
     }
+    return _articles;
+
   }
 }

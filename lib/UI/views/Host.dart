@@ -1,4 +1,3 @@
-import 'package:epiflipboard/UI/views/ExploreFragment.dart';
 import 'package:epiflipboard/UI/views/FollowingFragment.dart';
 import 'package:epiflipboard/UI/views/ProfileFragment.dart';
 import 'package:epiflipboard/UI/views/home/HomeFragment.dart';

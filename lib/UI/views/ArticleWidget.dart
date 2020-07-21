@@ -1,6 +1,6 @@
 import 'package:epiflipboard/UI/components/generic/WrapOverflowText.dart';
 import 'package:epiflipboard/UI/utils.dart';
-import 'file:///C:/Users/Moi/Documents/GitLab/epiflipboard/epiflipboard-app/lib/models/Article.dart';
+import 'package:epiflipboard/models/models.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

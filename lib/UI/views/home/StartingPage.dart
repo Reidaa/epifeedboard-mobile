@@ -1,6 +1,6 @@
 import 'package:epiflipboard/UI/components/PrimaryArticleBox.dart';
 import 'package:epiflipboard/UI/components/SecondaryArticleBox.dart';
-import 'file:///C:/Users/Moi/Documents/GitLab/epiflipboard/epiflipboard-app/lib/models/Article.dart';
+import 'package:epiflipboard/models/models.dart';
 import 'package:flutter/material.dart';
 
 class StartingPage extends StatelessWidget {

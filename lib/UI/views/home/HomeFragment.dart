@@ -1,7 +1,7 @@
 import 'package:epiflipboard/UI/views/ArticleWidget.dart';
 import 'package:epiflipboard/UI/views/home/StartingPage.dart';
-import 'file:///C:/Users/Moi/Documents/GitLab/epiflipboard/epiflipboard-app/lib/models/Article.dart';
-import 'file:///C:/Users/Moi/Documents/GitLab/epiflipboard/epiflipboard-app/lib/repositories/api.dart' as api;
+import 'package:epiflipboard/models/models.dart';
+import 'package:epiflipboard/repositories/api.dart' as api;
 import 'package:flutter/material.dart';
 
 class HomeFragment extends StatefulWidget {

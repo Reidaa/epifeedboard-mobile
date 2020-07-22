@@ -4,6 +4,7 @@ import 'package:epiflipboard/models/models.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class ArticleWidget extends StatelessWidget {
   final ArticleModel article;
@@ -48,12 +49,13 @@ class ArticleWidget extends StatelessWidget {
         flex: 55,
         child: Container(
           width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              fit: BoxFit.cover,
-              image: NetworkImage(imageUrl),
-            ),
+          child: FadeInImage.memoryNetwork(
+            fadeInDuration: const Duration(milliseconds: 250),
+            placeholder: kTransparentImage,
+            image: imageUrl,
+            fit: BoxFit.cover,
           ),
+          // image: NetworkImage(imageUrl),
         ),
       );
   }

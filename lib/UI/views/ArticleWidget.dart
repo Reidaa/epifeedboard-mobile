@@ -1,8 +1,9 @@
 import 'package:epiflipboard/UI/components/generic/WrapOverflowText.dart';
-import 'package:epiflipboard/UI/utils.dart';
+import 'package:epiflipboard/UI/views/ArticleWebview.dart';
 import 'package:epiflipboard/models/models.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class ArticleWidget extends StatelessWidget {
   final ArticleModel article;
@@ -15,10 +16,7 @@ class ArticleWidget extends StatelessWidget {
       onTap: () => buildWebViewArticle(context: context, article: article),
       child: Column(
         children: <Widget>[
-          Expanded(
-            flex: 55,
-            child: _buildCover(context: context, imageUrl: article.imageUrl),
-          ),
+          _buildCover(context: context, imageUrl: article.imageUrl),
           Expanded(
             flex: 45,
             child: Padding(
@@ -43,15 +41,21 @@ class ArticleWidget extends StatelessWidget {
 
   Widget _buildCover(
       {@required BuildContext context, @required String imageUrl}) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          fit: BoxFit.cover,
-          image: NetworkImage(imageUrl),
+    if (imageUrl == null)
+      return Container(height: 20);
+    else
+      return Expanded(
+        flex: 55,
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              fit: BoxFit.cover,
+              image: NetworkImage(imageUrl),
+            ),
+          ),
         ),
-      ),
-    );
+      );
   }
 
   Widget _buildTitle({@required String title}) {
@@ -68,16 +72,22 @@ class ArticleWidget extends StatelessWidget {
 
   Widget _buildHeader(
       {@required String url,
-      @required String age,
+      @required DateTime age,
       @required String authorName}) {
     var size = 14.0;
+    var ageString = "";
+
+    if (age != null) {
+      final DateFormat formatter = DateFormat("yyyy-MM-dd");
+      ageString = formatter.format(age);
+    }
 
     return Align(
       alignment: Alignment.centerLeft,
       child: Padding(
         padding: EdgeInsets.only(top: 4.0),
         child: Text(
-          "$url | $age | $authorName",
+          "$url | $ageString",
           style: TextStyle(fontSize: size),
         ),
       ),
@@ -85,6 +95,9 @@ class ArticleWidget extends StatelessWidget {
   }
 
   Widget _buildBody({@required String body}) {
+    if (body == null) {
+      return Container();
+    }
     return Expanded(
       child: Padding(
         padding: EdgeInsets.only(top: 4.0),

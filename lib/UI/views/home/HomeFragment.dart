@@ -13,52 +13,19 @@ class _HomeFragmentState extends State<HomeFragment> {
   List<ArticleModel> _articles = [];
   API _api = API();
 
-  void _updateArticles() {
-    _api.fetchArticles();
-    _articles.add(CarlosArticle());
-    _articles.add(BobArticle());
-    _articles.add(PatrickArticle());
-    _articles.add(CarlosArticle());
-    _articles.add(BobArticle());
-    _articles.add(PatrickArticle());
-    _articles.add(CarlosArticle());
-    _articles.add(BobArticle());
-    _articles.add(PatrickArticle());
-    _articles.add(CarlosArticle());
-    _articles.add(BobArticle());
-    _articles.add(PatrickArticle());
-    _articles.add(CarlosArticle());
-    _articles.add(BobArticle());
-    _articles.add(PatrickArticle());
-//    _articles = api.getArticles();
-  }
-
-  void refresh() {
-    setState(() {
-      _updateArticles();
-    });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    setState(() {
-      _updateArticles();
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: _api.fetchArticles(),
-      builder: (BuildContext context, AsyncSnapshot<List<ArticleModel>> snapshot) {
+        future: _api.fetchArticles(),
+        builder:
+            (BuildContext context, AsyncSnapshot<List<ArticleModel>> snapshot) {
           if (snapshot.hasData) {
-            _articles = snapshot.data; 
-          
+            _articles = snapshot.data;
+
             var widgetList = buildArticlesWidgetList(
-                articles: _articles.getRange(3, snapshot.data.length).toList());
+                articles: _articles.getRange(3, _articles.length).toList());
             widgetList.insert(
-                0, StartingPage(articles: snapshot.data.getRange(0, 3).toList()));
+                0, StartingPage(articles: _articles.getRange(0, 3).toList()));
 
             return Scaffold(
               body: PageView(
@@ -67,11 +34,12 @@ class _HomeFragmentState extends State<HomeFragment> {
               ),
             );
           } else {
-            return CircularProgressIndicator();
+            return Scaffold(
+              body: Center(child: CircularProgressIndicator()),
+            );
           }
-      }
-    );
-    
+        });
+
     // var widgetList = buildArticlesWidgetList(
     //     articles: _articles.getRange(3, _articles.length).toList());
     // widgetList.insert(

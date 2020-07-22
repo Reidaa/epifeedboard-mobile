@@ -1,4 +1,4 @@
-import 'package:epiflipboard/UI/utils.dart';
+import 'package:epiflipboard/UI/views/ArticleWebview.dart';
 import 'package:epiflipboard/models/models.dart';
 import 'package:flutter/material.dart';
 
@@ -30,6 +30,7 @@ class SecondaryArticleBox extends StatelessWidget {
   }
 
   Widget _buildCover({@required BuildContext context}) {
+    if (article.imageUrl == null) return Container();
     return Container(
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(

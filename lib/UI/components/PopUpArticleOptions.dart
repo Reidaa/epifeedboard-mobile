@@ -1,4 +1,4 @@
-import 'file:///C:/Users/Moi/Documents/GitLab/epiflipboard/epiflipboard-app/lib/models/Article.dart';
+import 'package:epiflipboard/models/models.dart';
 import 'package:flutter/material.dart';
 
 enum Options {

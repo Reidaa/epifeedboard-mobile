@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:epiflipboard/UI/constants.dart';
 import "package:epiflipboard/UI/views/Host.dart";
-import 'package:epiflipboard/UI/views/RegisterScreen.dart';
+import 'package:epiflipboard/UI/views/register/RegisterScreen.dart';
 
 class LoginScreen extends StatefulWidget {
   @override

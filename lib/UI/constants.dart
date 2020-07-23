@@ -2,20 +2,17 @@ import 'package:flutter/material.dart';
 
 final kHintTextStyle = TextStyle(
   color: Colors.white54,
-  fontFamily: 'OpenSans',
 );
 
 final kLabelStyle = TextStyle(
   color: Colors.white,
   fontWeight: FontWeight.bold,
-  fontFamily: 'OpenSans',
 );
 
-final titleLabelStyle = TextStyle(
+final TextStyle titleLabelStyle = TextStyle(
   color: Colors.white,
   fontWeight: FontWeight.bold,
-  fontFamily: 'OpenSans',
-  fontSize: 30
+  fontSize: 30,
 );
 
 final kBoxDecorationStyle = BoxDecoration(
@@ -29,3 +26,7 @@ final kBoxDecorationStyle = BoxDecoration(
     ),
   ],
 );
+
+final kbackGroundColor = Colors.black54;
+final kAppBarColor = Colors.black87;
+final kBottomBarColor = Colors.black;

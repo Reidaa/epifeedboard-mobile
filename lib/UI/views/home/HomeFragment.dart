@@ -16,40 +16,29 @@ class _HomeFragmentState extends State<HomeFragment> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: _api.fetchArticles(),
-        builder:
-            (BuildContext context, AsyncSnapshot<List<ArticleModel>> snapshot) {
-          if (snapshot.hasData) {
-            _articles = snapshot.data;
+      future: _api.testFetchArticles(),
+      builder:
+          (BuildContext context, AsyncSnapshot<List<ArticleModel>> snapshot) {
+        if (snapshot.hasData) {
+          _articles = snapshot.data;
 
-            var widgetList = buildArticlesWidgetList(
-                articles: _articles.getRange(3, _articles.length).toList());
-            widgetList.insert(
-                0, StartingPage(articles: _articles.getRange(0, 3).toList()));
+          var widgetList = buildArticlesWidgetList(
+              articles: _articles.getRange(3, _articles.length).toList());
+          widgetList.insert(
+              0, StartingPage(articles: _articles.getRange(0, 3).toList()));
 
-            return Scaffold(
-              body: PageView(
-                scrollDirection: Axis.vertical,
-                children: widgetList,
-              ),
-            );
-          } else {
-            return Scaffold(
-              body: Center(child: CircularProgressIndicator()),
-            );
-          }
-        });
-
-    // var widgetList = buildArticlesWidgetList(
-    //     articles: _articles.getRange(3, _articles.length).toList());
-    // widgetList.insert(
-    //     0, StartingPage(articles: _articles.getRange(0, 3).toList()));
-
-    // return Scaffold(
-    //   body: PageView(
-    //     scrollDirection: Axis.vertical,
-    //     children: widgetList,
-    //   ),
-    // );
+          return Scaffold(
+            body: PageView(
+              scrollDirection: Axis.vertical,
+              children: widgetList,
+            ),
+          );
+        } else {
+          return Scaffold(
+            body: Center(child: CircularProgressIndicator()),
+          );
+        }
+      },
+    );
   }
 }

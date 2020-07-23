@@ -1,6 +1,7 @@
-import 'package:epiflipboard/UI/views/FollowingFragment.dart';
-import 'package:epiflipboard/UI/views/ProfileFragment.dart';
+import 'package:epiflipboard/UI/views/following/FollowingFragment.dart';
+import 'package:epiflipboard/UI/views/profile/ProfileFragment.dart';
 import 'package:epiflipboard/UI/views/home/HomeFragment.dart';
+import 'explore/ExploreFragment.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

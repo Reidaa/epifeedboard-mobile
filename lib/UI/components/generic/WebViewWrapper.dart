@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'file:///C:/Users/Moi/Documents/GitLab/epiflipboard/epiflipboard-app/lib/utils.dart' as helper;
+import 'package:epiflipboard/utils.dart' as helper;
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 

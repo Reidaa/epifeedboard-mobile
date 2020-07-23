@@ -21,6 +21,7 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  flappy_search_bar: 1.4.1
   flutter:
     sdk: flutter
   http: ^0.12.1
@@ -59,8 +60,8 @@ flutter:
   uses-material-design: true
 
   assets:
-   - assets/logos/facebook.jpg
-   - assets/logos/google.jpg
+    - assets/logos/facebook.jpg
+    - assets/logos/google.jpg
 
 
   fonts:

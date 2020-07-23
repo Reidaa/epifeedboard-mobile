@@ -4,12 +4,13 @@ import 'dart:convert';
 
 class API {
   final _baseUrl = "http://172.22.62.175:3000";
+  final client = http.Client();
 
-  API();
+  API() {}
 
   Future<List<ArticleModel>> fetchArticles() async {
     final url = '$_baseUrl/news';
-    final response = await http.get(url);
+    final response = await http.get(url).timeout(const Duration(seconds: 10));
     var _articles = <ArticleModel>[];
 
     if (response.statusCode != 200) {

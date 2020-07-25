@@ -1,15 +1,15 @@
-import 'package:epiflipboard/UI/components/generic/WrapOverflowText.dart';
-import 'package:epiflipboard/UI/views/ArticleWebview.dart';
+import 'file:///C:/Users/Moi/Documents/GitLab/epiflipboard/epiflipboard-app/lib/UI/components/WrapOverflowText.dart';
+import 'package:epiflipboard/UI/components/ArticleWebview.dart';
 import 'package:epiflipboard/models/models.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:transparent_image/transparent_image.dart';
 
-class ArticleWidget extends StatelessWidget {
+class ArticlePage extends StatelessWidget {
   final ArticleModel article;
 
-  const ArticleWidget({Key key, @required this.article}) : super(key: key);
+  const ArticlePage({Key key, @required this.article}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +55,6 @@ class ArticleWidget extends StatelessWidget {
             image: imageUrl,
             fit: BoxFit.cover,
           ),
-          // image: NetworkImage(imageUrl),
         ),
       );
   }
@@ -118,11 +117,11 @@ class ArticleWidget extends StatelessWidget {
   }
 }
 
-List<Widget> buildArticlesWidgetList({@required List<ArticleModel> articles}) {
+List<Widget> buildArticlesPageList({@required List<ArticleModel> articles}) {
   var widgetList = <Widget>[];
 
   for (var i = 0; i < articles.length; i++) {
-    widgetList.add(ArticleWidget(article: articles[i]));
+    widgetList.add(ArticlePage(article: articles[i]));
   }
 
   return widgetList;

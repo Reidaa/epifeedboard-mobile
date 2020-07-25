@@ -1,5 +1,5 @@
-import 'package:epiflipboard/UI/components/PrimaryArticleBox.dart';
-import 'package:epiflipboard/UI/components/SecondaryArticleBox.dart';
+import './PrimaryArticleBox.dart';
+import './SecondaryArticleBox.dart';
 import 'package:epiflipboard/models/models.dart';
 import 'package:flutter/material.dart';
 
@@ -32,7 +32,6 @@ class StartingPage extends StatelessWidget {
                           child: SecondaryArticleBox(article: articles[1]),
                         ),
                       ),
-//                      VerticalDivider(color: Colors.black),
                       Expanded(
                         child: Padding(
                           padding: EdgeInsets.only(left: _pad / 2.0),

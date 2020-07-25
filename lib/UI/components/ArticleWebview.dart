@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:epiflipboard/UI/components/InteractionBottomBar.dart';
 import 'package:epiflipboard/models/models.dart';
 
-import 'package:epiflipboard/utils.dart' as helper;
+import 'package:epiflipboard/utils/helper.dart' as helper;
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 

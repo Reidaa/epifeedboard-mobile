@@ -30,3 +30,5 @@ final kBoxDecorationStyle = BoxDecoration(
 final kbackGroundColor = Colors.black54;
 final kAppBarColor = Colors.black87;
 final kBottomBarColor = Colors.black;
+final selectedColor = Colors.red;
+final unselectedColor = Colors.white;

@@ -1,4 +1,4 @@
-import 'package:epiflipboard/UI/views/ArticleWebview.dart';
+import 'package:epiflipboard/UI/components/ArticleWebview.dart';
 import 'package:epiflipboard/models/models.dart';
 import 'package:flutter/material.dart';
 

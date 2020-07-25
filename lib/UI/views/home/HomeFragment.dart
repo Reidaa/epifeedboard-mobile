@@ -1,5 +1,6 @@
-import 'package:epiflipboard/UI/views/ArticleWidget.dart';
-import 'package:epiflipboard/UI/views/home/StartingPage.dart';
+import 'card/ArticleCard.dart';
+import 'page/ArticlePage.dart';
+import 'page/StartingPage.dart';
 import 'package:epiflipboard/models/models.dart';
 import 'package:epiflipboard/repositories/api.dart';
 import 'package:flutter/material.dart';
@@ -21,17 +22,9 @@ class _HomeFragmentState extends State<HomeFragment> {
           (BuildContext context, AsyncSnapshot<List<ArticleModel>> snapshot) {
         if (snapshot.hasData) {
           _articles = snapshot.data;
-
-          var widgetList = buildArticlesWidgetList(
-              articles: _articles.getRange(3, _articles.length).toList());
-          widgetList.insert(
-              0, StartingPage(articles: _articles.getRange(0, 3).toList()));
-
           return Scaffold(
-            body: PageView(
-              scrollDirection: Axis.vertical,
-              children: widgetList,
-            ),
+            appBar: AppBar(title: Text("EPIFLIPBOARD")),
+            body: _buildCardView(articles: _articles),
           );
         } else {
           return Scaffold(
@@ -39,6 +32,26 @@ class _HomeFragmentState extends State<HomeFragment> {
           );
         }
       },
+    );
+  }
+
+  Widget _buildPageView({@required List<ArticleModel> articles}) {
+    var widgetList = buildArticlesPageList(
+        articles: _articles.getRange(3, _articles.length).toList());
+    widgetList.insert(
+        0, StartingPage(articles: _articles.getRange(0, 3).toList()));
+
+    return PageView(
+      scrollDirection: Axis.vertical,
+      children: widgetList,
+    );
+  }
+
+  Widget _buildCardView({@required List<ArticleModel> articles}) {
+    var widgetList = buildArticleCardList(articles: _articles);
+    return ListView(
+      scrollDirection: Axis.vertical,
+      children: widgetList,
     );
   }
 }

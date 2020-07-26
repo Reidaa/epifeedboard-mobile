@@ -4,8 +4,10 @@ import 'dart:convert';
 import 'dart:math';
 
 class API {
-  final _baseUrl = "http://172.22.62.175:3000";
-  final client = http.Client();
+  final _baseUrl = "https://epiflipboard-api.herokuapp.com";
+  List<ArticleModel> _articles = [];
+
+  // List<String> _sourcesToFilter = ["youtube"];
 
   API();
 
@@ -29,20 +31,50 @@ class API {
     return articles;
   }
 
-  Future<List<ArticleModel>> fetchArticles() async {
-    final url = '$_baseUrl/news';
+  void offlineFillArticles() {
+    var rng = Random();
+    var articles = <ArticleModel>[];
+
+    for (int i = 0; i != 25; i++) {
+      switch (rng.nextInt(3)) {
+        case 0:
+          articles.add(CarlosArticle());
+          break;
+        case 1:
+          articles.add(BobArticle());
+          break;
+        case 2:
+          articles.add(PatrickArticle());
+          break;
+      }
+    }
+
+    this._articles = articles;
+  }
+
+  Future<void> updateArticles() async {
+    final url = '$_baseUrl/news/headlines?country=fr';
     final response = await http.get(url);
-    var _articles = <ArticleModel>[];
+    var articles = <ArticleModel>[];
 
     if (response.statusCode != 200) {
       throw new Exception("error getting articles");
     }
-
     final json = jsonDecode(response.body);
     for (int i = 0; i != json["data"]["articles"].length; i++) {
       var article = ArticleModel.fromJson(json["data"]["articles"][i]);
-      _articles.add(article);
+      articles.add(article);
     }
-    return _articles;
+    this._articles = articles;
+  }
+
+  Future<List<ArticleModel>> fetchArticles() async {
+    if (this._articles.isNotEmpty) return this._articles;
+    try {
+      await updateArticles();
+    } catch (e) {
+      offlineFillArticles();
+    }
+    return this._articles;
   }
 }

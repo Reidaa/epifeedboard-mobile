@@ -1,5 +1,5 @@
-import 'file:///C:/Users/Moi/Documents/GitLab/epiflipboard/epiflipboard-app/lib/UI/components/WrapOverflowText.dart';
 import 'package:epiflipboard/UI/components/ArticleWebview.dart';
+import 'package:epiflipboard/UI/components/WrapOverflowText.dart';
 import 'package:epiflipboard/models/models.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +14,7 @@ class ArticlePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => buildWebViewArticle(context: context, article: article),
+      onTap: () => pushWebViewArticle(context: context, article: article),
       child: Column(
         children: <Widget>[
           _buildCover(context: context, imageUrl: article.imageUrl),

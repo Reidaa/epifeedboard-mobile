@@ -10,7 +10,7 @@ class PrimaryArticleBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => buildWebViewArticle(context: context, article: article),
+      onTap: () => pushWebViewArticle(context: context, article: article),
       child: Stack(
         children: <Widget>[
           _buildDarkenedCover(context: context),

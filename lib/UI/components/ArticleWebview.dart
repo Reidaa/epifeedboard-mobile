@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:epiflipboard/UI/components/InteractionBottomBar.dart';
 import 'package:epiflipboard/models/models.dart';
 
 import 'package:epiflipboard/utils/helper.dart' as helper;
@@ -38,14 +37,13 @@ class _ArticleWebviewState extends State<ArticleWebview> {
               onPageFinished: (String url) => {},
             ),
           ),
-          InteractionBottomBar(),
         ],
       ),
     );
   }
 }
 
-buildWebViewArticle(
+pushWebViewArticle(
     {@required BuildContext context, @required ArticleModel article}) {
   return Navigator.push(
     context,

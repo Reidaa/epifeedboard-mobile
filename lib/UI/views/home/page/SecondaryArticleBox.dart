@@ -12,7 +12,7 @@ class SecondaryArticleBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: GestureDetector(
-        onTap: () => buildWebViewArticle(context: context, article: article),
+        onTap: () => pushWebViewArticle(context: context, article: article),
         child: Column(
           children: <Widget>[
             Expanded(

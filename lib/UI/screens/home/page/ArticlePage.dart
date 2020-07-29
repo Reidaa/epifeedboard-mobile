@@ -1,10 +1,11 @@
-import 'package:epiflipboard/UI/components/ArticleWebview.dart';
-import 'package:epiflipboard/UI/components/WrapOverflowText.dart';
-import 'package:epiflipboard/models/models.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:transparent_image/transparent_image.dart';
+
+import 'package:epiflipboard/ui/shared/ArticleWebview.dart';
+import 'package:epiflipboard/ui/shared/WrapOverflowText.dart';
+import 'package:epiflipboard/models/models.dart';
 
 class ArticlePage extends StatelessWidget {
   final ArticleModel article;

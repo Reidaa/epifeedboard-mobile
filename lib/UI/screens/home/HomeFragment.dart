@@ -1,10 +1,10 @@
+import 'package:flutter/material.dart';
+
 import 'card/ArticleCard.dart';
 // import 'page/ArticlePage.dart';
 // import 'page/StartingPage.dart';
-import 'package:epiflipboard/models/models.dart';
-import 'package:epiflipboard/repositories/api.dart';
-import 'package:flutter/material.dart';
-import 'package:epiflipboard/utils/constants.dart';
+import '../../../models/models.dart';
+import '../../../network/api.dart';
 
 class HomeFragment extends StatefulWidget {
   @override
@@ -26,11 +26,7 @@ class _HomeFragmentState extends State<HomeFragment> {
           return Scaffold(
             appBar: AppBar(
               elevation: 2,
-              backgroundColor: kbackGroundColor,
-              title: Text(
-                "EPIFLIPBOARD",
-                style: TextStyle(color: textColor),
-              ),
+              title: Text("EPIFLIPBOARD"),
             ),
             body: _buildCardView(articles: _articles),
           );

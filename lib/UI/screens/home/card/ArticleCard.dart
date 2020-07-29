@@ -1,7 +1,8 @@
-import 'package:epiflipboard/models/Article.dart';
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
-import 'package:epiflipboard/UI/components/ArticleWebview.dart';
+
+import '../../../../models/Article.dart';
+import '../../../shared/ArticleWebview.dart';
 
 class ArticleCard extends StatelessWidget {
   final compactSize = 200.0;
@@ -32,7 +33,6 @@ class ArticleCard extends StatelessWidget {
     if (imageURL != null) {
       return Card(
         clipBehavior: Clip.antiAliasWithSaveLayer,
-        // semanticContainer: true,
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
         child: Container(

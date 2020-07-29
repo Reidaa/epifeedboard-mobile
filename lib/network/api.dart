@@ -1,7 +1,8 @@
-import '../models/Article.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:math';
+
+import '../models/Article.dart';
 
 class API {
   final _baseUrl = "https://epiflipboard-api.herokuapp.com";

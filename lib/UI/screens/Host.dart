@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:epiflipboard/UI/views/home/HomeFragment.dart';
+import 'package:epiflipboard/UI/screens/home/HomeFragment.dart';
 
 class Host extends StatefulWidget {
   @override

@@ -1,6 +1,7 @@
-import 'package:epiflipboard/UI/components/ArticleWebview.dart';
-import 'package:epiflipboard/models/models.dart';
 import 'package:flutter/material.dart';
+
+import 'package:epiflipboard/ui/shared/ArticleWebview.dart';
+import 'package:epiflipboard/models/models.dart';
 
 class PrimaryArticleBox extends StatelessWidget {
   final ArticleModel article;

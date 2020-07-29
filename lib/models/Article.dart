@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:meta/meta.dart';
-import 'package:epiflipboard/utils/helper.dart' as helper;
+
+import '../utils/helper.dart' as helper;
 
 class ArticleModel {
   String imageUrl;
